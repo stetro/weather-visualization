@@ -8,25 +8,30 @@
   fill: #666;
 }
 
+.axis.degree text{
+  fill:#999;
+    font: 10px sans-serif;
+}
 .axis line,
 .axis circle {
   fill: none;
-  stroke:#AAA;
+  stroke:#BBB;
+  stroke-width: 1px;
   stroke-dasharray: 1,4;
 }
 .axis circle{
   stroke: #EEE;
   fill:none;
-  stroke-dasharray: none;
+  stroke-dasharray: 80,10;
 }
 
 .day line{
   fill: none;
   stroke: #966;
-  stroke-width: 1.3px;
+  stroke-width: 1.2px;
 }
 .day circle{
-  fill:rgba(0, 0, 255, 0.3);
+  fill:rgba(0, 0, 255, 0.23);
 }
 
 .axis :last-of-type circle {
@@ -38,4 +43,13 @@
   fill: none;
   stroke: red;
   stroke-width: 1.5px;
+}
+
+text.title{
+  font: 30px sans-serif;
+  fill: #444;
+}
+text.subtitle{
+  font: 14px sans-serif;
+ fill: #444;
 }

@@ -1,10 +1,12 @@
 $(function() {
 	d3.json("data.json", function(error, data) {
 
+		// settings
 		var width = 860,
 			height = 600,
 			radius = Math.min(width, height) / 2 - 60;
 
+		// scales and generated values
 		var degree = d3.scale.linear()
 			.domain([-30, 35])
 			.range([0, radius]);
@@ -22,10 +24,10 @@ $(function() {
 		var colors = tinygradient(
 			[{
 				color: 'blue',
-				pos: 0.5
+				pos: 0.45
 			}, {
 				color: 'green',
-				pos: 0.52
+				pos: 0.50
 			}, {
 				color: 'yellow',
 				pos: 0.6
@@ -33,6 +35,7 @@ $(function() {
 				color: 'red',
 				pos: 0.8
 			}]).rgb(Math.floor(radius), true);
+
 		var line = d3.svg.line.radial()
 			.radius(function(d) {
 				return degree(d[1]);
@@ -41,14 +44,16 @@ $(function() {
 				return -d[0] + Math.PI / 2;
 			});
 
+		// adding svg element to body and apply settings
 		var svg = d3.select("body").append("svg")
 			.attr("width", width)
 			.attr("height", height)
 			.append("g")
 			.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
+		// draw radial degree axis with labels
 		var degreeAxis = svg.append("g")
-			.attr("class", "r axis")
+			.attr("class", "r axis degree")
 			.selectAll("g")
 			.data(degree.ticks(5).slice(1))
 			.enter().append("g");
@@ -60,12 +65,13 @@ $(function() {
 			.attr("y", function(d) {
 				return -degree(d) - 4;
 			})
-			.attr("transform", "rotate(15)")
+			.attr("transform", "rotate(0)")
 			.style("text-anchor", "middle")
 			.text(function(d) {
 				return d + "°";
 			});
 
+		// draw radial month axis with labels
 		var monthAxis = svg.append("g")
 			.attr("class", "a axis month")
 			.selectAll("g")
@@ -80,7 +86,7 @@ $(function() {
 
 		monthAxis.append("text")
 			.attr("x", radius + 6)
-			.attr("dy", ".35em")
+			.attr("dy", ".25em")
 			.style("text-anchor", function(month) {
 				d = time(month);
 				return d < 270 && d > 90 ? "end" : null;
@@ -93,8 +99,7 @@ $(function() {
 				return moment(month).format('MMM');
 			});
 
-
-
+		// draw radial day plots with teperature and rainfall
 		var dayPlot = svg.append("g")
 			.attr("class", "a day")
 			.selectAll("g")
@@ -127,6 +132,18 @@ $(function() {
 				day = moment(day);
 				return "stroke:" + colors[Math.floor(degree(data[day.format('MM')][day.format('DD')].temperature))] + " ;"
 			});
+	
+		// adding a measurement description
+		svg.append("text")
+			.attr("class", "title")
+			.attr("text-anchor", "middle")
+			.attr("y", 0)
+			.text(data.location);
 
+		svg.append("text")
+			.attr("class", "subtitle")
+			.attr("text-anchor", "middle")
+			.attr("y", 17)
+			.text(data.station);
 	});
 });
