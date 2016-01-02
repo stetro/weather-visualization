@@ -1,0 +1,30 @@
+{
+  "name": "weather-visualization",
+  "description": "a small d3 based weather visualization of a gone year",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "weather",
+    "d3",
+    "visualization",
+    "web"
+  ],
+  "authors": [
+    "Steffen Tröster"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "moment": "~2.10.6",
+    "d3": "~3.5.12",
+    "jquery": "~2.1.4",
+    "tinygradient": "~0.3.0"
+  }
+}

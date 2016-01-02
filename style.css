@@ -1,0 +1,41 @@
+.frame {
+  fill: none;
+  stroke: #000;
+}
+
+.axis text  {
+  font: 13px sans-serif;
+  fill: #666;
+}
+
+.axis line,
+.axis circle {
+  fill: none;
+  stroke:#AAA;
+  stroke-dasharray: 1,4;
+}
+.axis circle{
+  stroke: #EEE;
+  fill:none;
+  stroke-dasharray: none;
+}
+
+.day line{
+  fill: none;
+  stroke: #966;
+  stroke-width: 1.3px;
+}
+.day circle{
+  fill:rgba(0, 0, 255, 0.3);
+}
+
+.axis :last-of-type circle {
+  stroke: #333;
+  stroke-dasharray: none;
+}
+
+.line {
+  fill: none;
+  stroke: red;
+  stroke-width: 1.5px;
+}
