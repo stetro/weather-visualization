@@ -2,7 +2,7 @@ $(function() {
 	d3.json("data.json", function(error, data) {
 
 		// settings
-		var width = 860,
+		var width = 600,
 			height = 600,
 			radius = Math.min(width, height) / 2 - 60;
 
