@@ -8,7 +8,7 @@ $(function() {
 
 		// scales and generated values
 		var degree = d3.scale.linear()
-			.domain([-30, 35])
+			.domain([-25, 34])
 			.range([0, radius]);
 
 		var rainfall = d3.scale.linear()
@@ -24,10 +24,10 @@ $(function() {
 		var colors = tinygradient(
 			[{
 				color: 'blue',
-				pos: 0.45
+				pos: 0.40
 			}, {
 				color: 'green',
-				pos: 0.50
+				pos: 0.46
 			}, {
 				color: 'yellow',
 				pos: 0.6
@@ -50,26 +50,6 @@ $(function() {
 			.attr("height", height)
 			.append("g")
 			.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-
-		// draw radial degree axis with labels
-		var degreeAxis = svg.append("g")
-			.attr("class", "r axis degree")
-			.selectAll("g")
-			.data(degree.ticks(5).slice(1))
-			.enter().append("g");
-
-		degreeAxis.append("circle")
-			.attr("r", degree);
-
-		degreeAxis.append("text")
-			.attr("y", function(d) {
-				return -degree(d) - 4;
-			})
-			.attr("transform", "rotate(0)")
-			.style("text-anchor", "middle")
-			.text(function(d) {
-				return d + "°";
-			});
 
 		// draw radial month axis with labels
 		var monthAxis = svg.append("g")
@@ -97,6 +77,38 @@ $(function() {
 			})
 			.text(function(month) {
 				return moment(month).format('MMM');
+			});
+
+		// draw radial degree axis with labels
+		var degreeAxis = svg.append("g")
+			.attr("class", "r axis degree")
+			.selectAll("g")
+			.data(degree.ticks(5).slice(1))
+			.enter().append("g");
+
+		degreeAxis.append("circle")
+			.attr("r", degree);
+
+		degreeAxis.append("rect")
+			.attr("width", function (d) {
+				return 20;
+			})
+			.attr("height", function (d) {
+				return 10;
+			})
+			.attr("y", function (d) {
+				return -degree(d)-5;
+			})
+			.attr("x", function (d) {
+				return -10;
+			});
+		degreeAxis.append("text")
+			.attr("y", function(d) {
+				return -degree(d)+4;
+			})
+			.style("text-anchor", "middle")
+			.text(function(d) {
+				return d + "°";
 			});
 
 		// draw radial day plots with teperature and rainfall
