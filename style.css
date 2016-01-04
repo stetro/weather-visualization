@@ -30,15 +30,18 @@
 
 .day line{
   fill: none;
-  stroke: #966;
   stroke-width: 1.2px;
+  animation: fadeIn 1.5s;
+  animation-delay: -0.4s;
 }
+
 .day circle{
   fill:rgba(0, 0, 255, 0.23);
+  animation: fadeIn 1.5s;
 }
 
 .axis :last-of-type circle {
-  stroke: #333;
+  stroke: #888;
   stroke-dasharray: none;
 }
 
@@ -54,5 +57,16 @@ text.title{
 }
 text.subtitle{
   font: 14px sans-serif;
- fill: #444;
+  fill: #444;
 }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform:scale(0);
+  }
+  100% {
+    opacity: initial;
+    transform:scale(1.0);
+  }
+} 
