@@ -45,7 +45,7 @@ $(function() {
 			});
 
 		// adding svg element to body and apply settings
-		var svg = d3.select("body").append("svg")
+		var svg = d3.select("#diagram").append("svg")
 			.attr("width", width)
 			.attr("height", height)
 			.append("g")
