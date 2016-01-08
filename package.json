@@ -1,0 +1,19 @@
+{
+  "name": "weather-visualization-parser",
+  "version": "1.0.0",
+  "description": "parses the weather information from cologne nippes weather station",
+  "main": "parser.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stetro/weather-visualization.git"
+  },
+  "author": "Steffen Tröster",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stetro/weather-visualization/issues"
+  },
+  "homepage": "https://github.com/stetro/weather-visualization#readme",
+  "dependencies": {
+    "cheerio": "^0.19.0"
+  }
+}

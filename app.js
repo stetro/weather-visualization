@@ -8,7 +8,7 @@ $(function() {
 
 		// scales and generated values
 		var degree = d3.scale.linear()
-			.domain([-25, 34])
+			.domain([-25, 40])
 			.range([0, radius]);
 
 		var rainfall = d3.scale.linear()
@@ -124,7 +124,7 @@ $(function() {
 		dayPlot.append("circle")
 			.attr("cx", function(day) {
 				day = moment(day);
-				return degree(data[day.format('MM')][day.format('DD')].temperature - 4.0);
+				return degree(data[day.format('MM')][day.format('DD')].to - 4.0);
 			})
 			.attr("r", function(day) {
 					day = moment(day);
@@ -134,15 +134,15 @@ $(function() {
 		dayPlot.append("line")
 			.attr("x2", function(day) {
 				day = moment(day);
-				return degree(data[day.format('MM')][day.format('DD')].temperature - 8.0);
+				return degree(data[day.format('MM')][day.format('DD')].from);
 			})
 			.attr("x1", function(day) {
 				day = moment(day);
-				return degree(data[day.format('MM')][day.format('DD')].temperature);
+				return degree(data[day.format('MM')][day.format('DD')].to);
 			})
 			.attr("style", function(day) {
 				day = moment(day);
-				return "stroke:" + colors[Math.floor(degree(data[day.format('MM')][day.format('DD')].temperature))] + " ;"
+				return "stroke:" + colors[Math.floor(degree(data[day.format('MM')][day.format('DD')].to))] + " ;"
 			});
 	
 		// adding a measurement description
