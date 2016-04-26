@@ -1,6 +1,8 @@
 $(function() {
-	d3.json("data.json", function(error, data) {
-		// settings
+	var FORECAST_API_KEY = "removed";
+	$.getJSON("https://api.forecast.io/forecast/" + FORECAST_API_KEY + "/" + 50.937531 + "," + 6.960278600000038 + "?units=si&callback=?", function(data) {
+		console.log(data)
+			// settings
 		var width = 575,
 			height = 500,
 			marginTop = 45,
@@ -13,24 +15,11 @@ $(function() {
 			.append("g")
 			.attr("transform", "translate(" + marginLeft + "," + marginTop + ")");
 
-		setCurrentWeatherInformation(data, "Köln", container);
+		setCurrentWeatherInformation(data, "Cologne", container);
 		setCurrentWeatherGraph(data, container);
 		addWeekdays(data, container);
 
-		$("button").click(function() {
-
-		});
-
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(function(pos) {
-				console.log(pos);
-				console.log(data);
-			});
-		}
-
 	});
-
-
 
 	function mapWeatherToIconContent(iconName) {
 		switch (iconName) {
@@ -59,7 +48,6 @@ $(function() {
 		}
 	}
 
-
 	function setCurrentWeatherGraph(data, container) {
 		var chartHeight = 60;
 		var chartPosition = 210;
@@ -81,25 +69,50 @@ $(function() {
 			]);
 		var yScale = d3.scale.linear().range([0, chartHeight])
 			.domain([
-				d3.min(data.hourly.data.slice(0, 24), temperatureAccessor),
-				d3.max(data.hourly.data.slice(0, 24), temperatureAccessor) + 5
+				d3.max(data.hourly.data.slice(0, 24), temperatureAccessor),
+				d3.min(data.hourly.data.slice(0, 24), temperatureAccessor) - 5
 			]);
 
 		// linechart axis
+		var lookUpTable = data.hourly.data.slice(0, 24).map(function(d) {
+			return moment.tz(d.time * 1000, data.timezone);
+		});
 		var xAxisTime = d3.svg.axis()
 			.scale(xScale)
 			.orient("bottom")
 			.ticks(d3.time.hours, 3)
-			.tickSize([0, 0])
+			.outerTickSize(0)
 			.tickFormat(function(d) {
-				return moment(d).format("HH:mm")
+				var index = 0
+				for (index = 0; index < 24; index++) {
+					if (moment(d).isSame(lookUpTable[index])) {
+						break;
+					}
+				}
+				if (index < 23) {
+					return moment.tz(d, data.timezone).format("HH:mm")
+				}
+				return "";
 			});
-
 		var xAxisTemperature = d3.svg.axis()
-			.scale(yScale)
+			.scale(xScale)
 			.orient("top")
 			.ticks(d3.time.hours, 3)
-			.tickSize([0, 0]);
+			.outerTickSize(0)
+			.tickFormat(function(d) {
+				var index = 0
+				var temperature = data.hourly.data[index].temperature;
+				for (index = 0; index < 24; index++) {
+					if (moment(d).isSame(lookUpTable[index])) {
+						temperature = data.hourly.data[index].temperature;
+						break;
+					}
+				}
+				if (index < 23) {
+					return numeral(temperature).format('0') + "\u00B0";
+				}
+				return "";
+			});
 
 		// chart with line and background area
 		var line = d3.svg.line().interpolate("basis")
@@ -109,8 +122,7 @@ $(function() {
 			.y(function(d) {
 				return yScale(d.temperature);
 			});
-
-		var area = d3.svg.area()
+		var area = d3.svg.area().interpolate("basis")
 			.x(function(d) {
 				return xScale(moment.tz(d.time * 1000, data.timezone));
 			})
@@ -131,11 +143,17 @@ $(function() {
 			.attr("d", line)
 			.attr("transform", "translate(0," + chartPosition + ")");
 
-		// draw xAxisTime
+		// draw axis
 		container.append("g")
 			.attr("class", "x axis")
 			.attr("transform", "translate(0," + (chartPosition + 10 + chartHeight) + ")")
 			.call(xAxisTime)
+			.selectAll("text")
+			.style("text-anchor", "start");
+		container.append("g")
+			.attr("class", "x axis")
+			.attr("transform", "translate(0," + (chartPosition) + ")")
+			.call(xAxisTemperature)
 			.selectAll("text")
 			.style("text-anchor", "start");;
 
@@ -261,7 +279,7 @@ $(function() {
 
 		// degree 
 		var degree = container.append("text")
-			.attr("x", 70)
+			.attr("x", 80)
 			.attr("y", 130);
 		degree.append("tspan")
 			.attr("class", "degree")
