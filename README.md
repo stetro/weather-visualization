@@ -7,5 +7,5 @@ The following screenshot shows temperature and rainfall changes for the weather 
 
 [codepen.io Demo](http://codepen.io/anon/pen/wMdOzm)
 
-![Screenshot](screenshot.png)
+![Screenshot](year-visualization/screenshot.png)
 

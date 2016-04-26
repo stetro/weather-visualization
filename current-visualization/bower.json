@@ -1,0 +1,23 @@
+{
+  "name": "current-visualization",
+  "homepage": "https://github.com/stetro/weather-visualization",
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "d3": "^3.5.16",
+    "moment": "^2.13.0",
+    "jquery": "^2.2.3",
+    "weather-icons": "^2.0.10",
+    "numeral": "^1.5.3",
+    "moment-timezone": "^0.5.3"
+  }
+}

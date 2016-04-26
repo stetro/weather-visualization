@@ -1,0 +1,70 @@
+body {
+   font-family: arial,sans-serif-light,sans-serif;
+   font-weight: 300;
+   fill: #878787;
+   margin-top: 100px;
+}
+
+#diagram > svg{
+	background-color: white;
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+}
+
+#diagram>svg .title{
+	font-size: 1.5em;
+}
+
+.icon{
+	font-family: weathericons;
+	font-size: 3.4em;
+}
+
+.degree{
+	font-size: 3.4em;	
+}
+.unit, .degree{
+	fill:black;
+}
+
+.dayName{
+	font-size: 0.9em;
+	text-anchor:middle;
+	fill:#bababa;
+}
+.dayIcon{
+	text-anchor:middle;
+	font-family: weathericons;
+	font-size: 2em;
+}
+.dayRect{
+	fill: transparent;
+	cursor: pointer;
+}
+.dayTemperatures{
+	font-size: 0.8em;
+	text-anchor:middle;
+	fill:#bababa;
+}
+.dayTemperatureMax{
+	fill:#888888;
+}
+.dayTemperatureMin{
+	fill:#bababa;
+}
+path.area{
+	fill: rgba(255, 204, 0, 0.2);
+	stroke: none;
+}
+
+path.line{
+	fill: none;
+	stroke: rgb(255, 204, 0);
+	stroke-width:2;
+}
+
+.x.axis .tick text{
+	font-size: 0.8em;
+	fill:#bababa;
+}
