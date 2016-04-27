@@ -11,5 +11,6 @@ The following screenshot shows temperature and rainfall changes for the weather 
 
 The second visualization is inspired by Googles forecast visualization inside Google Search.
 
-![Screenshot](current-visualization/screenshot.png)
+![Screenshot](current-visualization/screenshot.jpg)
+
 
