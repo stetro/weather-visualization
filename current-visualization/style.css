@@ -44,7 +44,6 @@ input{
 }
 .dayRect{
 	fill: transparent;
-	cursor: pointer;
 }
 .dayTemperatures{
 	font-size: 0.8em;
@@ -57,17 +56,49 @@ input{
 .dayTemperatureMin{
 	fill:#bababa;
 }
-path.area{
+g#temperaturegraph path.area{
 	fill: rgba(255, 204, 0, 0.2);
 	stroke: none;
 }
-
-path.line{
+g#temperaturegraph path.line{
 	fill: none;
 	stroke: rgb(255, 204, 0);
 	stroke-width:2;
 }
-
+g#precipitationgraph rect{
+	fill:#e7f1fd;
+}
+g#precipitationgraph rect.stroke{
+	stroke-width:1;
+	stroke: #1878f0;
+}
+g#precipitationgraph .x.axis.precipitation text{
+	fill:#1878f0;
+}
+g#windgraph .x.axis.wind text{
+	fill:black;
+}
+g#windgraph text.arrow{
+	font-family: weathericons;
+	text-anchor:middle;
+}
+.button rect{
+	fill: #f5f5f5;
+	stroke: rgba(0,0,0,0.1);
+	stroke-width:1;
+	cursor: pointer;
+}
+.button.active rect{
+	fill: #eee;	
+	stroke: rgba(0,0,0,0.3);
+}
+.button text{
+	font-size: 0.7em;
+	font-weight: bold;
+	text-anchor:middle;
+	fill: #444;
+	cursor: pointer;
+}
 .x.axis .tick text{
 	font-size: 0.8em;
 	fill:#bababa;
