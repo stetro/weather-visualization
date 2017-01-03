@@ -1,5 +1,5 @@
 $(function() {
-	d3.json("data.json", function(error, data) {
+	d3.json("data16.json", function(error, data) {
 
 		// settings
 		var width = 600,
@@ -144,7 +144,7 @@ $(function() {
 				day = moment(day);
 				return "stroke:" + colors[Math.floor(degree(data[day.format('MM')][day.format('DD')].to))] + " ;"
 			});
-	
+
 		// adding a measurement description
 		svg.append("text")
 			.attr("class", "title")

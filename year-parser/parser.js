@@ -4,18 +4,18 @@ var cheerio = require('cheerio');
 var http = require('http');
 
 var months = [
-    'http://www.nippes-wetter.de/Tabellen/2015/m201501.htm',
-    'http://www.nippes-wetter.de/Tabellen/2015/m201502.htm',
-    'http://www.nippes-wetter.de/Tabellen/2015/m201503.htm',
-    'http://www.nippes-wetter.de/Tabellen/2015/m201504.htm',
-    'http://www.nippes-wetter.de/Tabellen/2015/m201505.htm',
-    'http://www.nippes-wetter.de/Tabellen/2015/m201506.htm',
-    'http://www.nippes-wetter.de/Tabellen/2015/m201507.htm',
-    'http://www.nippes-wetter.de/Tabellen/2015/m201508.htm',
-    'http://www.nippes-wetter.de/Tabellen/2015/m201509.htm',
-    'http://www.nippes-wetter.de/Tabellen/2015/m201510.htm',
-    'http://www.nippes-wetter.de/Tabellen/2015/m201511.htm',
-    'http://www.nippes-wetter.de/Tabellen/2015/m201512.htm'
+    'http://www.nippes-wetter.de/Tabellen/2016/m201601.htm',
+    'http://www.nippes-wetter.de/Tabellen/2016/m201602.htm',
+    'http://www.nippes-wetter.de/Tabellen/2016/m201603.htm',
+    'http://www.nippes-wetter.de/Tabellen/2016/m201604.htm',
+    'http://www.nippes-wetter.de/Tabellen/2016/m201605.htm',
+    'http://www.nippes-wetter.de/Tabellen/2016/m201606.htm',
+    'http://www.nippes-wetter.de/Tabellen/2016/m201607.htm',
+    'http://www.nippes-wetter.de/Tabellen/2016/m201608.htm',
+    'http://www.nippes-wetter.de/Tabellen/2016/m201609.htm',
+    'http://www.nippes-wetter.de/Tabellen/2016/m201610.htm',
+    'http://www.nippes-wetter.de/Tabellen/2016/m201611.htm',
+    'http://www.nippes-wetter.de/Tabellen/2016/m201612.htm'
 ];
 
 var allMonths = {};
@@ -45,4 +45,3 @@ for (var i = months.length - 1; i >= 0; i--) {
     request.end();
 };
 console.log('}');
-
