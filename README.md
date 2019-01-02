@@ -7,7 +7,7 @@ The following screenshot shows temperature and rainfall changes for the weather 
 
 [codepen.io Demo](http://codepen.io/anon/pen/wMdOzm)
 
-![Screenshot](year-visualization/screenshot.png)
+![Screenshot](year-visualization/demo.gif)
 
 The second visualization is inspired by Googles forecast visualization inside Google Search.
 
