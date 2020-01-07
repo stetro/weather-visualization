@@ -1,5 +1,5 @@
 $(function() {
-	d3.json("data17.json", function(error, data) {
+	d3.json("data19.json", function(error, data) {
 
 		// settings
 		var width = 600,
@@ -8,7 +8,7 @@ $(function() {
 
 		// scales and generated values
 		var degree = d3.scale.linear()
-			.domain([-25, 40])
+			.domain([-25, 49])
 			.range([0, radius]);
 
 		var rainfall = d3.scale.linear()
